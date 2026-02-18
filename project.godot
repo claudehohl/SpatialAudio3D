@@ -8,15 +8,19 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Spatial Audio 3D Demo"
 config/description="Spatial acoustics with calculated delays, reverb and occlusion effects based on level geometry."
 config/version="1.0.0"
 run/main_scene="res://world/main.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/stretch_mode=0
 boot_splash/image="res://addons/spatial_audio_3d/icon.png"
-boot_splash/fullsize=false
 config/icon="res://addons/spatial_audio_3d/icon.png"
 
 [audio]
