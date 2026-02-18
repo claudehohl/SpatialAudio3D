@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://d0fgg5heb5yhk"]
+[gd_scene format=3 uid="uid://d0fgg5heb5yhk"]
 
 [ext_resource type="PackedScene" uid="uid://oc13h3au02ro" path="res://modules/player/player_character.tscn" id="1_3mjyg"]
 [ext_resource type="Material" uid="uid://d2hlgwv25hqet" path="res://world/materials/ground.tres" id="3_d5cna"]
@@ -13,10 +13,10 @@
 [ext_resource type="Material" uid="uid://dq848ji7sftlo" path="res://world/materials/orange.tres" id="9_y4ax1"]
 [ext_resource type="PackedScene" uid="uid://c15nevasm0cx0" path="res://modules/machine/switch.tscn" id="9_ybt7b"]
 [ext_resource type="AudioStream" uid="uid://ch1jto0ak8vqj" path="res://sounds/rain-roof.ogg" id="11_b3se3"]
-[ext_resource type="Script" path="res://addons/spatial_audio_3d/spatial_audio_3d.gd" id="11_faltu"]
+[ext_resource type="Script" uid="uid://y8x4svl5kej2" path="res://addons/spatial_audio_3d/spatial_audio_3d.gd" id="11_faltu"]
 [ext_resource type="PackedScene" uid="uid://dtspx1dvpj8xf" path="res://modules/soundvisualizer/soundvisualizer.tscn" id="11_qfy36"]
 [ext_resource type="AudioStream" uid="uid://ckn8hxwk3kfex" path="res://sounds/Benny Greb Drum Solo - Drumeo.ogg" id="15_nycb5"]
-[ext_resource type="Script" path="res://modules/machine/machine.gd" id="16_2kiqa"]
+[ext_resource type="Script" uid="uid://cpud4b0f2ydhj" path="res://modules/machine/machine.gd" id="16_2kiqa"]
 [ext_resource type="AudioStream" uid="uid://pbdoisvnkau7" path="res://sounds/Public Service Announcements Style Voice Over Sample.ogg" id="16_j36q8"]
 [ext_resource type="AudioStream" uid="uid://d3hpnb6eugqsi" path="res://sounds/Speech audio quality test.ogg" id="17_pe3hh"]
 [ext_resource type="AudioStream" uid="uid://ciqi776c3qfyb" path="res://sounds/motorcycle-harley.ogg" id="18_wxuwm"]
@@ -76,8 +76,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_51j8c"]
 _data = {
-"RESET": SubResource("Animation_akju5"),
-"walk": SubResource("Animation_b277m")
+&"RESET": SubResource("Animation_akju5"),
+&"walk": SubResource("Animation_b277m")
 }
 
 [sub_resource type="Curve3D" id="Curve3D_euh20"]
@@ -122,8 +122,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6qhux"]
 _data = {
-"RESET": SubResource("Animation_c7sas"),
-"bikerun": SubResource("Animation_ig5w0")
+&"RESET": SubResource("Animation_c7sas"),
+&"bikerun": SubResource("Animation_ig5w0")
 }
 
 [sub_resource type="Curve3D" id="Curve3D_jbfcg"]
@@ -167,8 +167,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3wefv"]
 _data = {
-"RESET": SubResource("Animation_o5vv7"),
-"walk": SubResource("Animation_afgty")
+&"RESET": SubResource("Animation_o5vv7"),
+&"walk": SubResource("Animation_afgty")
 }
 
 [sub_resource type="Curve3D" id="Curve3D_pld5s"]
@@ -221,8 +221,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ry423"]
 _data = {
-"RESET": SubResource("Animation_0c67u"),
-"fly": SubResource("Animation_q2apb")
+&"RESET": SubResource("Animation_0c67u"),
+&"fly": SubResource("Animation_q2apb")
 }
 
 [sub_resource type="Curve3D" id="Curve3D_24fgp"]
@@ -232,31 +232,31 @@ _data = {
 }
 point_count = 5
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" unique_id=272127667]
 metadata/_edit_lock_ = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1035971841]
 environment = SubResource("Environment_oc6s0")
 camera_attributes = SubResource("CameraAttributesPractical_bmebr")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=892999077]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 shadow_blur = 0.5
 directional_shadow_max_distance = 1000.0
 metadata/_edit_lock_ = true
 
-[node name="VoxelGI" type="VoxelGI" parent="."]
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=844811260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 40.5, -28)
 subdiv = 2
 size = Vector3(436, 99, 194)
 data = ExtResource("4_76kk7")
 metadata/_edit_lock_ = true
 
-[node name="Player_Character" parent="." instance=ExtResource("1_3mjyg")]
+[node name="Player_Character" parent="." unique_id=2054796667 instance=ExtResource("1_3mjyg")]
 transform = Transform3D(-1, 0, 2.66237e-07, 0, 1, 0, -2.66237e-07, 0, -1, -54, 1, 2)
 
-[node name="Ground" type="CSGBox3D" parent="."]
+[node name="Ground" type="CSGBox3D" parent="." unique_id=63238351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1.5)
 material_override = ExtResource("3_d5cna")
 use_collision = true
@@ -264,17 +264,17 @@ size = Vector3(1000, 1, 1000)
 material = ExtResource("3_d5cna")
 metadata/_edit_lock_ = true
 
-[node name="Tunnel opening" type="CSGBox3D" parent="Ground"]
+[node name="Tunnel opening" type="CSGBox3D" parent="Ground" unique_id=778016033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.732, 0, -9)
 operation = 2
 size = Vector3(102, 1, 10)
 metadata/_edit_lock_ = true
 
-[node name="Introhall" type="Node3D" parent="."]
+[node name="Introhall" type="Node3D" parent="." unique_id=1380954527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, 10)
 metadata/_edit_lock_ = true
 
-[node name="Soundplayer Machine" type="Node3D" parent="Introhall"]
+[node name="Soundplayer Machine" type="Node3D" parent="Introhall" unique_id=100575928]
 script = ExtResource("16_2kiqa")
 title = "Soundplayer"
 activate_text = "Play"
@@ -283,23 +283,21 @@ switches = Array[NodePath]([NodePath("Switch")])
 motors = Array[NodePath]([NodePath("AnimationPlayer"), NodePath("Path3D/PathFollow3D/Soundplayer")])
 metadata/_edit_lock_ = true
 
-[node name="Switch" parent="Introhall/Soundplayer Machine" instance=ExtResource("9_ybt7b")]
+[node name="Switch" parent="Introhall/Soundplayer Machine" unique_id=1824243727 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, -4)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Introhall/Soundplayer Machine"]
-libraries = {
-"": SubResource("AnimationLibrary_51j8c")
-}
-autoplay = "walk"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Introhall/Soundplayer Machine" unique_id=209352189]
+libraries/ = SubResource("AnimationLibrary_51j8c")
+autoplay = &"walk"
 
-[node name="Path3D" type="Path3D" parent="Introhall/Soundplayer Machine"]
+[node name="Path3D" type="Path3D" parent="Introhall/Soundplayer Machine" unique_id=1611141761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 curve = SubResource("Curve3D_euh20")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Introhall/Soundplayer Machine/Path3D"]
-transform = Transform3D(0.0179334, 0.0144669, 0.999652, -1.39696e-09, 0.999828, -0.014469, -0.999823, 0.000259484, 0.0179303, 6.06284, 1.72486, 7.2841)
+[node name="PathFollow3D" type="PathFollow3D" parent="Introhall/Soundplayer Machine/Path3D" unique_id=938237228]
+transform = Transform3D(0.017933384, 0.014466855, 0.99965197, -1.3969611e-09, 0.9998279, -0.014468962, -0.999823, 0.0002594842, 0.017930318, 6.06284, 1.72486, 7.2841)
 
-[node name="Soundplayer" type="AudioStreamPlayer3D" parent="Introhall/Soundplayer Machine/Path3D/PathFollow3D"]
+[node name="Soundplayer" type="AudioStreamPlayer3D" parent="Introhall/Soundplayer Machine/Path3D/PathFollow3D" unique_id=132625063]
 transform = Transform3D(0.0402699, 4.53438e-08, -0.999205, -0.0330329, 0.999458, -0.00133124, 0.998663, 0.0330602, 0.0402481, 0.361872, -0.72259, 1.89912)
 stream = ExtResource("6_dx1w7")
 script = ExtResource("11_faltu")
@@ -310,7 +308,7 @@ audiophysics_ticks = 30
 loop = true
 debug = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Introhall"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Introhall" unique_id=371149362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 3, 0)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
@@ -318,41 +316,41 @@ radius = 5.0
 height = 6.0
 sides = 64
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Introhall"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Introhall" unique_id=1987396007]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 3, 7)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(1, 5, 15)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Introhall"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Introhall" unique_id=539117647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 5.5, 14)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(1, 10, 29)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Introhall"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Introhall" unique_id=2066245764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 3, 0)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(30, 5, 1)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Introhall"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Introhall" unique_id=919228768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 3, 14)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(30, 5, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Introhall"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Introhall" unique_id=616943523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 6, 7)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(31, 1, 15)
 
-[node name="Tunnel" type="Node3D" parent="."]
+[node name="Tunnel" type="Node3D" parent="." unique_id=185031191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.732, 0, -7.5)
 metadata/_edit_lock_ = true
 
-[node name="Motorbike Machine" type="Node3D" parent="Tunnel"]
+[node name="Motorbike Machine" type="Node3D" parent="Tunnel" unique_id=997570135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.732, 0, 7.5)
 script = ExtResource("16_2kiqa")
 title = "Motorbike"
@@ -362,24 +360,22 @@ switches = Array[NodePath]([NodePath("Motorbike Switch")])
 motors = Array[NodePath]([NodePath("AnimationPlayer"), NodePath("Bikepath/PathFollow3D/Motorbike")])
 metadata/_edit_lock_ = true
 
-[node name="Motorbike Switch" parent="Tunnel/Motorbike Machine" instance=ExtResource("9_ybt7b")]
+[node name="Motorbike Switch" parent="Tunnel/Motorbike Machine" unique_id=1270459907 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tunnel/Motorbike Machine"]
-libraries = {
-"": SubResource("AnimationLibrary_6qhux")
-}
-autoplay = "bikerun"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tunnel/Motorbike Machine" unique_id=149781751]
+libraries/ = SubResource("AnimationLibrary_6qhux")
+autoplay = &"bikerun"
 
-[node name="Bikepath" type="Path3D" parent="Tunnel/Motorbike Machine"]
+[node name="Bikepath" type="Path3D" parent="Tunnel/Motorbike Machine" unique_id=271889687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 1, -9)
 curve = SubResource("Curve3D_jbfcg")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Tunnel/Motorbike Machine/Bikepath"]
-transform = Transform3D(-0.554616, -4.93188e-06, -0.831936, 5.22894e-11, 0.999866, -5.92725e-06, 0.831956, -3.28785e-06, -0.554603, 0.155843, -0.0415017, 0.052555)
-progress = 0.00012207
+[node name="PathFollow3D" type="PathFollow3D" parent="Tunnel/Motorbike Machine/Bikepath" unique_id=1384801255]
+transform = Transform3D(-0.5546161, -4.93189e-06, -0.8319361, 5.2289402e-11, 0.999866, -5.9272697e-06, 0.83195597, -3.2878636e-06, -0.55460286, 0.15584327, -0.041501746, 0.052554976)
+progress = 0.00012207031
 
-[node name="Motorbike" type="AudioStreamPlayer3D" parent="Tunnel/Motorbike Machine/Bikepath/PathFollow3D"]
+[node name="Motorbike" type="AudioStreamPlayer3D" parent="Tunnel/Motorbike Machine/Bikepath/PathFollow3D" unique_id=590973870]
 transform = Transform3D(-0.133911, -2.12129e-08, 0.990999, -0.0653676, 0.997841, -0.00883291, -0.988856, -0.0659618, -0.133621, -0.031189, 0.0520601, 0.15831)
 stream = ExtResource("18_wxuwm")
 script = ExtResource("11_faltu")
@@ -390,53 +386,53 @@ occlusion_fadetime = 0.2
 audiophysics_ticks = 60
 loop = true
 
-[node name="Sound Visualizer" parent="Tunnel/Motorbike Machine/Bikepath/PathFollow3D/Motorbike" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Tunnel/Motorbike Machine/Bikepath/PathFollow3D/Motorbike" unique_id=1641123126 instance=ExtResource("11_qfy36")]
 
-[node name="Ramp" type="CSGBox3D" parent="Tunnel"]
+[node name="Ramp" type="CSGBox3D" parent="Tunnel" unique_id=1107209651]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0.790089, -4.05625, 0)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 size = Vector3(31.5654, 1, 10)
 material = ExtResource("7_b5w2i")
 
-[node name="Ramp2" type="CSGBox3D" parent="Tunnel"]
+[node name="Ramp2" type="CSGBox3D" parent="Tunnel" unique_id=1675559278]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -70.7637, -4.06331, 0)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 size = Vector3(31.5107, 1, 10)
 material = ExtResource("7_b5w2i")
 
-[node name="Tunnelstreet" type="CSGBox3D" parent="Tunnel"]
+[node name="Tunnelstreet" type="CSGBox3D" parent="Tunnel" unique_id=363488074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -8, 0)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 size = Vector3(44, 1, 10)
 material = ExtResource("7_b5w2i")
 
-[node name="Tunnelroof" type="CSGBox3D" parent="Tunnel"]
+[node name="Tunnelroof" type="CSGBox3D" parent="Tunnel" unique_id=105962486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 0)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 size = Vector3(44, 1, 10)
 material = ExtResource("7_b5w2i")
 
-[node name="Wall" type="CSGBox3D" parent="Tunnel"]
+[node name="Wall" type="CSGBox3D" parent="Tunnel" unique_id=1372930548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -4.5, 5.5)
 use_collision = true
 size = Vector3(100, 8, 1)
 material = ExtResource("7_ov7kc")
 
-[node name="Wall2" type="CSGBox3D" parent="Tunnel"]
+[node name="Wall2" type="CSGBox3D" parent="Tunnel" unique_id=1728410204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -4.5, -5.5)
 use_collision = true
 size = Vector3(100, 8, 1)
 material = ExtResource("7_ov7kc")
 
-[node name="Concert" type="Node3D" parent="."]
+[node name="Concert" type="Node3D" parent="." unique_id=1117661738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.5, 5.5, -24)
 metadata/_edit_lock_ = true
 
-[node name="Drumset Machine" type="Node3D" parent="Concert"]
+[node name="Drumset Machine" type="Node3D" parent="Concert" unique_id=1169007658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -5.5, -56)
 script = ExtResource("16_2kiqa")
 title = "Drumset"
@@ -446,10 +442,10 @@ switches = Array[NodePath]([NodePath("Drumset Switch")])
 motors = Array[NodePath]([NodePath("Drumset")])
 metadata/_edit_lock_ = true
 
-[node name="Drumset Switch" parent="Concert/Drumset Machine" instance=ExtResource("9_ybt7b")]
+[node name="Drumset Switch" parent="Concert/Drumset Machine" unique_id=1324024715 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 12)
 
-[node name="Drumset" type="AudioStreamPlayer3D" parent="Concert/Drumset Machine"]
+[node name="Drumset" type="AudioStreamPlayer3D" parent="Concert/Drumset Machine" unique_id=1510168990]
 transform = Transform3D(1, -9.68595e-08, 1.22192e-06, 9.68594e-08, 1, 3.07346e-08, -1.22192e-06, -3.07345e-08, 1, 1.00002, 1, -2)
 stream = ExtResource("15_nycb5")
 script = ExtResource("11_faltu")
@@ -457,9 +453,9 @@ reverb_volume_db = -16.0
 bass_proximity = 100
 loop = true
 
-[node name="Sound Visualizer" parent="Concert/Drumset Machine/Drumset" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Concert/Drumset Machine/Drumset" unique_id=1181844750 instance=ExtResource("11_qfy36")]
 
-[node name="PSA Machine" type="Node3D" parent="Concert"]
+[node name="PSA Machine" type="Node3D" parent="Concert" unique_id=632349610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -5.5, -56)
 script = ExtResource("16_2kiqa")
 title = "Public Service Announcement"
@@ -469,10 +465,10 @@ switches = Array[NodePath]([NodePath("PSA Switch")])
 motors = Array[NodePath]([NodePath("PSA")])
 metadata/_edit_lock_ = true
 
-[node name="PSA Switch" parent="Concert/PSA Machine" instance=ExtResource("9_ybt7b")]
+[node name="PSA Switch" parent="Concert/PSA Machine" unique_id=1615863105 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 12)
 
-[node name="PSA" type="AudioStreamPlayer3D" parent="Concert/PSA Machine"]
+[node name="PSA" type="AudioStreamPlayer3D" parent="Concert/PSA Machine" unique_id=1774215752]
 transform = Transform3D(1, -9.68595e-08, 1.22192e-06, 9.68594e-08, 1, 3.07346e-08, -1.22192e-06, -3.07345e-08, 1, 1.00002, 1, -2)
 stream = ExtResource("16_j36q8")
 script = ExtResource("11_faltu")
@@ -480,93 +476,93 @@ reverb_volume_db = -16.0
 bass_proximity = 0
 loop = true
 
-[node name="Sound Visualizer" parent="Concert/PSA Machine/PSA" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Concert/PSA Machine/PSA" unique_id=1901811984 instance=ExtResource("11_qfy36")]
 
-[node name="Concertwall" type="CSGBox3D" parent="Concert"]
+[node name="Concertwall" type="CSGBox3D" parent="Concert" unique_id=568837360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(50, 10, 1)
 
-[node name="Concertwall4" type="CSGBox3D" parent="Concert"]
+[node name="Concertwall4" type="CSGBox3D" parent="Concert" unique_id=120326782]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -39.0711, 0, -7.07107)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(30, 10, 1)
 
-[node name="Concertwall5" type="CSGBox3D" parent="Concert"]
+[node name="Concertwall5" type="CSGBox3D" parent="Concert" unique_id=1349027900]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 38.9289, 0, -7.07107)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(30, 10, 1)
 
-[node name="Concertwall2" type="CSGBox3D" parent="Concert"]
+[node name="Concertwall2" type="CSGBox3D" parent="Concert" unique_id=1302417173]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -72)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(50, 20, 1)
 
-[node name="Concertwall3" type="CSGBox3D" parent="Concert"]
+[node name="Concertwall3" type="CSGBox3D" parent="Concert" unique_id=32933181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.5, -61)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(18, 7, 1)
 
-[node name="Concertwall6" type="CSGBox3D" parent="Concert"]
+[node name="Concertwall6" type="CSGBox3D" parent="Concert" unique_id=986340616]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22, -1.5, -56)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(18, 7, 1)
 
-[node name="Town" type="Node3D" parent="."]
+[node name="Town" type="Node3D" parent="." unique_id=1665339602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -54)
 
-[node name="House1" type="Node3D" parent="Town"]
+[node name="House1" type="Node3D" parent="Town" unique_id=1940097072]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -18.5, 2, -11)
 metadata/_edit_lock_ = true
 
-[node name="Wall" type="CSGBox3D" parent="Town/House1"]
+[node name="Wall" type="CSGBox3D" parent="Town/House1" unique_id=1823813839]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 8)
 
-[node name="Wall2" type="CSGBox3D" parent="Town/House1"]
+[node name="Wall2" type="CSGBox3D" parent="Town/House1" unique_id=1665819471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 8)
 
-[node name="Wall3" type="CSGBox3D" parent="Town/House1"]
+[node name="Wall3" type="CSGBox3D" parent="Town/House1" unique_id=149554623]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, -5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 15)
 
-[node name="Wall4" type="CSGBox3D" parent="Town/House1"]
+[node name="Wall4" type="CSGBox3D" parent="Town/House1" unique_id=1055621516]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 6)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 15)
 
-[node name="Wall5" type="CSGBox3D" parent="Town/House1"]
+[node name="Wall5" type="CSGBox3D" parent="Town/House1" unique_id=591945506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 12)
 
-[node name="Roof" type="CSGBox3D" parent="Town/House1"]
+[node name="Roof" type="CSGBox3D" parent="Town/House1" unique_id=1443462061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(16, 1, 12)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Town/House1"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Town/House1" unique_id=889222248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1)
 light_energy = 2.0
 omni_range = 10.0
 
-[node name="Talking Machine" type="Node3D" parent="Town"]
+[node name="Talking Machine" type="Node3D" parent="Town" unique_id=638793970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -12)
 script = ExtResource("16_2kiqa")
 title = "Talking and Walking People"
@@ -576,23 +572,21 @@ switches = Array[NodePath]([NodePath("Talking Switch")])
 motors = Array[NodePath]([NodePath("Talking Path/PathFollow3D/House"), NodePath("AnimationPlayer")])
 metadata/_edit_lock_ = true
 
-[node name="Talking Switch" parent="Town/Talking Machine" instance=ExtResource("9_ybt7b")]
+[node name="Talking Switch" parent="Town/Talking Machine" unique_id=1048299479 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 12)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Town/Talking Machine"]
-libraries = {
-"": SubResource("AnimationLibrary_3wefv")
-}
-autoplay = "walk"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Town/Talking Machine" unique_id=37589178]
+libraries/ = SubResource("AnimationLibrary_3wefv")
+autoplay = &"walk"
 
-[node name="Talking Path" type="Path3D" parent="Town/Talking Machine"]
+[node name="Talking Path" type="Path3D" parent="Town/Talking Machine" unique_id=1906219097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
 curve = SubResource("Curve3D_pld5s")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Town/Talking Machine/Talking Path"]
-transform = Transform3D(-0.996588, 0.000454284, -0.0824238, 5.82071e-11, 0.999842, 0.00551214, 0.0824253, 0.00549266, -0.99657, 0.0173664, 1.10111, 0.418373)
+[node name="PathFollow3D" type="PathFollow3D" parent="Town/Talking Machine/Talking Path" unique_id=637365090]
+transform = Transform3D(-0.9996146, -0.00017108131, 0.027425665, 0, 0.9998377, 0.00623862, -0.027426276, 0.0062354575, -0.9995923, 0.0173664, 1.10111, 0.418373)
 
-[node name="House" type="AudioStreamPlayer3D" parent="Town/Talking Machine/Talking Path/PathFollow3D"]
+[node name="House" type="AudioStreamPlayer3D" parent="Town/Talking Machine/Talking Path/PathFollow3D" unique_id=186445069]
 transform = Transform3D(-0.996607, 6.04095e-08, 0.0824254, 0.00045448, 1.00003, 0.0054944, -0.0824243, 0.00551296, -0.996594, 0.0652332, 0.402072, -0.576004)
 stream = ExtResource("17_pe3hh")
 script = ExtResource("11_faltu")
@@ -600,99 +594,99 @@ bass_proximity = 0
 audiophysics_ticks = 30
 loop = true
 
-[node name="Sound Visualizer" parent="Town/Talking Machine/Talking Path/PathFollow3D/House" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Town/Talking Machine/Talking Path/PathFollow3D/House" unique_id=528035428 instance=ExtResource("11_qfy36")]
 
-[node name="House2" type="Node3D" parent="Town"]
+[node name="House2" type="Node3D" parent="Town" unique_id=909694593]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.5, 2, 8)
 metadata/_edit_lock_ = true
 
-[node name="Wall" type="CSGBox3D" parent="Town/House2"]
+[node name="Wall" type="CSGBox3D" parent="Town/House2" unique_id=364454752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49999, 0, -0.500023)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 8)
 
-[node name="Wall2" type="CSGBox3D" parent="Town/House2"]
+[node name="Wall2" type="CSGBox3D" parent="Town/House2" unique_id=792156422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49998, 0, 1.49997)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 8)
 
-[node name="Wall3" type="CSGBox3D" parent="Town/House2"]
+[node name="Wall3" type="CSGBox3D" parent="Town/House2" unique_id=1547740862]
 transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 0.5, 0, -5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 15)
 
-[node name="Wall4" type="CSGBox3D" parent="Town/House2"]
+[node name="Wall4" type="CSGBox3D" parent="Town/House2" unique_id=275774781]
 transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 0.499981, 0, 5.99998)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 15)
 
-[node name="Wall5" type="CSGBox3D" parent="Town/House2"]
+[node name="Wall5" type="CSGBox3D" parent="Town/House2" unique_id=1802567801]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50002, 0, 0.499981)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 12)
 
-[node name="Roof" type="CSGBox3D" parent="Town/House2"]
+[node name="Roof" type="CSGBox3D" parent="Town/House2" unique_id=836188938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(16, 1, 12)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Town/House2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Town/House2" unique_id=1826903000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1)
 light_energy = 2.0
 omni_range = 10.0
 
-[node name="House3" type="Node3D" parent="Town"]
+[node name="House3" type="Node3D" parent="Town" unique_id=1974858810]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 33.5, 2, 23)
 metadata/_edit_lock_ = true
 
-[node name="Wall" type="CSGBox3D" parent="Town/House3"]
+[node name="Wall" type="CSGBox3D" parent="Town/House3" unique_id=1913381819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 8)
 
-[node name="Wall2" type="CSGBox3D" parent="Town/House3"]
+[node name="Wall2" type="CSGBox3D" parent="Town/House3" unique_id=836270647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 8)
 
-[node name="Wall3" type="CSGBox3D" parent="Town/House3"]
+[node name="Wall3" type="CSGBox3D" parent="Town/House3" unique_id=1075675667]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, -5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 15)
 
-[node name="Wall4" type="CSGBox3D" parent="Town/House3"]
+[node name="Wall4" type="CSGBox3D" parent="Town/House3" unique_id=1328001172]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 6)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 15)
 
-[node name="Wall5" type="CSGBox3D" parent="Town/House3"]
+[node name="Wall5" type="CSGBox3D" parent="Town/House3" unique_id=912671972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 12)
 
-[node name="Roof" type="CSGBox3D" parent="Town/House3"]
+[node name="Roof" type="CSGBox3D" parent="Town/House3" unique_id=1864248934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(16, 1, 12)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Town/House3"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Town/House3" unique_id=1804704898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1)
 light_energy = 2.0
 omni_range = 10.0
 
-[node name="Rain Machine" type="Node3D" parent="Town"]
+[node name="Rain Machine" type="Node3D" parent="Town" unique_id=1049709881]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 33.5, 1.5, 23)
 script = ExtResource("16_2kiqa")
 title = "Rain"
@@ -702,10 +696,10 @@ switches = Array[NodePath]([NodePath("Rain Switch")])
 motors = Array[NodePath]([NodePath("Ambient Rain"), NodePath("Roof Rain")])
 metadata/_edit_lock_ = true
 
-[node name="Rain Switch" parent="Town/Rain Machine" instance=ExtResource("9_ybt7b")]
+[node name="Rain Switch" parent="Town/Rain Machine" unique_id=156025563 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 15.2028, -0.5, 0.35355)
 
-[node name="Ambient Rain" type="AudioStreamPlayer3D" parent="Town/Rain Machine"]
+[node name="Ambient Rain" type="AudioStreamPlayer3D" parent="Town/Rain Machine" unique_id=1085389013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 7, -3.25376)
 stream = ExtResource("9_8j7ux")
 volume_db = -6.0
@@ -719,9 +713,9 @@ occlusion_lp_cutoff = 1000
 occlusion_fadetime = 1.0
 loop = true
 
-[node name="Sound Visualizer" parent="Town/Rain Machine/Ambient Rain" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Town/Rain Machine/Ambient Rain" unique_id=1790402380 instance=ExtResource("11_qfy36")]
 
-[node name="Roof Rain" type="AudioStreamPlayer3D" parent="Town/Rain Machine"]
+[node name="Roof Rain" type="AudioStreamPlayer3D" parent="Town/Rain Machine" unique_id=1203288156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0.746235)
 stream = ExtResource("11_b3se3")
 volume_db = -12.0
@@ -733,21 +727,21 @@ occlusion_lp_cutoff = 1000
 occlusion_fadetime = 2.0
 loop = true
 
-[node name="Sound Visualizer" parent="Town/Rain Machine/Roof Rain" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Town/Rain Machine/Roof Rain" unique_id=2098889070 instance=ExtResource("11_qfy36")]
 
-[node name="Small Wall" type="CSGBox3D" parent="Town"]
+[node name="Small Wall" type="CSGBox3D" parent="Town" unique_id=805248152]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -23.7279, 2, -33.2426)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 29)
 
-[node name="Wall 45°" type="CSGBox3D" parent="Town"]
+[node name="Wall 45°" type="CSGBox3D" parent="Town" unique_id=1916512022]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 13.7721, 2, -12.2426)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(1, 3, 60)
 
-[node name="Silo" type="CSGCylinder3D" parent="."]
+[node name="Silo" type="CSGCylinder3D" parent="." unique_id=604683166]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 24, 10, 32)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
@@ -757,7 +751,7 @@ sides = 64
 material = ExtResource("7_ov7kc")
 metadata/_edit_lock_ = true
 
-[node name="Silo inside" type="CSGCylinder3D" parent="Silo"]
+[node name="Silo inside" type="CSGCylinder3D" parent="Silo" unique_id=1990966004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = ExtResource("7_ov7kc")
 operation = 2
@@ -766,28 +760,28 @@ height = 19.0
 sides = 64
 material = ExtResource("7_ov7kc")
 
-[node name="Entrance" type="CSGBox3D" parent="Silo"]
+[node name="Entrance" type="CSGBox3D" parent="Silo" unique_id=822166131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -8.3, 0)
 operation = 2
 size = Vector3(2, 2.5, 3)
 material = ExtResource("7_ov7kc")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Silo"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Silo" unique_id=653826549]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13, 8, 0)
 light_energy = 3.0
 spot_range = 17.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Silo"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="Silo" unique_id=473454506]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -13)
 light_energy = 3.0
 spot_range = 17.0
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Silo"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="Silo" unique_id=1800633440]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 13)
 light_energy = 3.0
 spot_range = 17.0
 
-[node name="Silo2" type="CSGCylinder3D" parent="."]
+[node name="Silo2" type="CSGCylinder3D" parent="." unique_id=319150820]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -18, 10, 32)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
@@ -797,7 +791,7 @@ sides = 64
 material = ExtResource("7_ov7kc")
 metadata/_edit_lock_ = true
 
-[node name="Silo inside" type="CSGCylinder3D" parent="Silo2"]
+[node name="Silo inside" type="CSGCylinder3D" parent="Silo2" unique_id=1529216607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = ExtResource("7_ov7kc")
 operation = 2
@@ -806,165 +800,165 @@ height = 19.0
 sides = 64
 material = ExtResource("7_ov7kc")
 
-[node name="Entrance" type="CSGBox3D" parent="Silo2"]
+[node name="Entrance" type="CSGBox3D" parent="Silo2" unique_id=316433572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -8.3, 0)
 operation = 2
 size = Vector3(2, 2.5, 3)
 material = ExtResource("7_ov7kc")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Silo2"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Silo2" unique_id=1115908347]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13, 8, 0)
 light_energy = 3.0
 spot_range = 17.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Silo2"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="Silo2" unique_id=1457978402]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -13)
 light_energy = 3.0
 spot_range = 17.0
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Silo2"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="Silo2" unique_id=447871880]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 13)
 light_energy = 3.0
 spot_range = 17.0
 
-[node name="Echo Walls" type="Node3D" parent="."]
+[node name="Echo Walls" type="Node3D" parent="." unique_id=930710515]
 metadata/_edit_lock_ = true
 
-[node name="Zone Green" type="CSGBox3D" parent="Echo Walls"]
+[node name="Zone Green" type="CSGBox3D" parent="Echo Walls" unique_id=864711352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.5, 0.01, -23.5)
 material_override = ExtResource("9_1dgb5")
 size = Vector3(30, 1, 139)
 material = ExtResource("7_ov7kc")
 
-[node name="Green Wall" type="CSGBox3D" parent="Echo Walls"]
+[node name="Green Wall" type="CSGBox3D" parent="Echo Walls" unique_id=795999802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.5, 2, -94)
 material_override = ExtResource("9_1dgb5")
 use_collision = true
 size = Vector3(30, 3, 1)
 
-[node name="Green Wall2" type="CSGBox3D" parent="Echo Walls"]
+[node name="Green Wall2" type="CSGBox3D" parent="Echo Walls" unique_id=1582039725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.5, 2, 46)
 material_override = ExtResource("9_1dgb5")
 use_collision = true
 size = Vector3(30, 3, 1)
 
-[node name="Zone Orange" type="CSGBox3D" parent="Echo Walls"]
+[node name="Zone Orange" type="CSGBox3D" parent="Echo Walls" unique_id=201764593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 0.01, -24)
 material_override = ExtResource("9_y4ax1")
 size = Vector3(20, 1, 100)
 material = ExtResource("7_ov7kc")
 
-[node name="Orange Wall" type="CSGBox3D" parent="Echo Walls"]
+[node name="Orange Wall" type="CSGBox3D" parent="Echo Walls" unique_id=994494851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 3, -74)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(20, 5, 1)
 
-[node name="Orange Wall2" type="CSGBox3D" parent="Echo Walls"]
+[node name="Orange Wall2" type="CSGBox3D" parent="Echo Walls" unique_id=1978981084]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 3, 26)
 material_override = ExtResource("9_y4ax1")
 use_collision = true
 size = Vector3(20, 5, 1)
 
-[node name="Zone Red" type="CSGBox3D" parent="Echo Walls"]
+[node name="Zone Red" type="CSGBox3D" parent="Echo Walls" unique_id=1092708311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.5, 0.01, -24)
 material_override = ExtResource("5_5plo6")
 size = Vector3(20, 1, 60)
 material = ExtResource("7_ov7kc")
 
-[node name="Red Wall" type="CSGBox3D" parent="Echo Walls"]
+[node name="Red Wall" type="CSGBox3D" parent="Echo Walls" unique_id=879591244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.5, 5.5, -54)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(20, 10, 1)
 
-[node name="Red Wall2" type="CSGBox3D" parent="Echo Walls"]
+[node name="Red Wall2" type="CSGBox3D" parent="Echo Walls" unique_id=963645388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.5, 5.5, 6)
 material_override = ExtResource("5_5plo6")
 use_collision = true
 size = Vector3(20, 10, 1)
 
-[node name="Zone Purple" type="CSGBox3D" parent="Echo Walls"]
+[node name="Zone Purple" type="CSGBox3D" parent="Echo Walls" unique_id=973672196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.5, 0.01, -24)
 material_override = ExtResource("7_rpe8j")
 size = Vector3(20, 1, 20)
 material = ExtResource("7_ov7kc")
 
-[node name="Purple Wall" type="CSGBox3D" parent="Echo Walls"]
+[node name="Purple Wall" type="CSGBox3D" parent="Echo Walls" unique_id=1071235307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.5, 10.5, -34)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(20, 20, 1)
 
-[node name="Purple Wall2" type="CSGBox3D" parent="Echo Walls"]
+[node name="Purple Wall2" type="CSGBox3D" parent="Echo Walls" unique_id=674366719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.5, 10.5, -14)
 material_override = ExtResource("7_rpe8j")
 use_collision = true
 size = Vector3(20, 20, 1)
 
-[node name="Zone Black" type="CSGBox3D" parent="Echo Walls"]
+[node name="Zone Black" type="CSGBox3D" parent="Echo Walls" unique_id=244605639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.5, 0.01, -24)
 material_override = ExtResource("7_ov7kc")
 size = Vector3(20, 1, 4)
 material = ExtResource("7_ov7kc")
 
-[node name="Black Wall" type="CSGBox3D" parent="Echo Walls"]
+[node name="Black Wall" type="CSGBox3D" parent="Echo Walls" unique_id=645154503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149, 15.5, -26)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 size = Vector3(19, 30, 1)
 
-[node name="Edge" type="CSGMesh3D" parent="Echo Walls/Black Wall"]
+[node name="Edge" type="CSGMesh3D" parent="Echo Walls/Black Wall" unique_id=205803742]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -10, 0, 0)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 mesh = SubResource("PrismMesh_esbhi")
 
-[node name="Black Wall2" type="CSGBox3D" parent="Echo Walls"]
+[node name="Black Wall2" type="CSGBox3D" parent="Echo Walls" unique_id=1151601304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149, 15.5, -22)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 size = Vector3(19, 30, 1)
 
-[node name="Edge2" type="CSGMesh3D" parent="Echo Walls/Black Wall2"]
+[node name="Edge2" type="CSGMesh3D" parent="Echo Walls/Black Wall2" unique_id=999655735]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -10, 0, 0)
 material_override = ExtResource("7_ov7kc")
 use_collision = true
 mesh = SubResource("PrismMesh_onrhv")
 
-[node name="Spaced Walls" type="Node3D" parent="Echo Walls"]
+[node name="Spaced Walls" type="Node3D" parent="Echo Walls" unique_id=1427279325]
 
-[node name="Wall" type="CSGBox3D" parent="Echo Walls/Spaced Walls"]
+[node name="Wall" type="CSGBox3D" parent="Echo Walls/Spaced Walls" unique_id=731820294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.5, 2, -22)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
 size = Vector3(10, 3, 1)
 
-[node name="Wall2" type="CSGBox3D" parent="Echo Walls/Spaced Walls"]
+[node name="Wall2" type="CSGBox3D" parent="Echo Walls/Spaced Walls" unique_id=1106111946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.5, 2, -22)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
 size = Vector3(10, 3, 1)
 
-[node name="Wall3" type="CSGBox3D" parent="Echo Walls/Spaced Walls"]
+[node name="Wall3" type="CSGBox3D" parent="Echo Walls/Spaced Walls" unique_id=1963028449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.5, 2, -22)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
 size = Vector3(10, 3, 1)
 
-[node name="Wall4" type="CSGBox3D" parent="Echo Walls/Spaced Walls"]
+[node name="Wall4" type="CSGBox3D" parent="Echo Walls/Spaced Walls" unique_id=1949036987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.5, 2, -22)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
 size = Vector3(20, 3, 1)
 
-[node name="Wall5" type="CSGBox3D" parent="Echo Walls/Spaced Walls"]
+[node name="Wall5" type="CSGBox3D" parent="Echo Walls/Spaced Walls" unique_id=1440193526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 211.5, 2, -30)
 material_override = ExtResource("7_b5w2i")
 use_collision = true
 size = Vector3(26, 3, 1)
 
-[node name="Heli Machine" type="Node3D" parent="."]
+[node name="Heli Machine" type="Node3D" parent="." unique_id=1372877916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 4)
 script = ExtResource("16_2kiqa")
 title = "Helicopter"
@@ -974,22 +968,20 @@ switches = Array[NodePath]([NodePath("Switch")])
 motors = Array[NodePath]([NodePath("AnimationPlayer"), NodePath("Path3D/PathFollow3D/Helicopter")])
 metadata/_edit_lock_ = true
 
-[node name="Switch" parent="Heli Machine" instance=ExtResource("9_ybt7b")]
+[node name="Switch" parent="Heli Machine" unique_id=5717445 instance=ExtResource("9_ybt7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Heli Machine"]
-libraries = {
-"": SubResource("AnimationLibrary_ry423")
-}
-autoplay = "fly"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Heli Machine" unique_id=814839367]
+libraries/ = SubResource("AnimationLibrary_ry423")
+autoplay = &"fly"
 
-[node name="Path3D" type="Path3D" parent="Heli Machine"]
+[node name="Path3D" type="Path3D" parent="Heli Machine" unique_id=580198303]
 curve = SubResource("Curve3D_24fgp")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Heli Machine/Path3D"]
-transform = Transform3D(-0.0361291, -0.0571271, 0.9977, 5.58784e-09, 0.998347, 0.0571647, -0.99933, 0.00206534, -0.0360702, 186.094, 21.3731, 65.5908)
+[node name="PathFollow3D" type="PathFollow3D" parent="Heli Machine/Path3D" unique_id=271182672]
+transform = Transform3D(-0.1275297, -0.06452611, 0.9897204, -3.7252263e-09, 0.99786377, 0.06505766, -0.9918174, 0.008296883, -0.12726007, 186.094, 21.3731, 65.5908)
 
-[node name="Helicopter" type="AudioStreamPlayer3D" parent="Heli Machine/Path3D/PathFollow3D"]
+[node name="Helicopter" type="AudioStreamPlayer3D" parent="Heli Machine/Path3D/PathFollow3D" unique_id=1518140230]
 stream = ExtResource("22_ycl2q")
 script = ExtResource("11_faltu")
 reverb_volume_db = 0.0
@@ -998,91 +990,91 @@ audiophysics_ticks = 30
 loop = true
 debug = true
 
-[node name="Sound Visualizer" parent="Heli Machine/Path3D/PathFollow3D/Helicopter" instance=ExtResource("11_qfy36")]
+[node name="Sound Visualizer" parent="Heli Machine/Path3D/PathFollow3D/Helicopter" unique_id=587178463 instance=ExtResource("11_qfy36")]
 
-[node name="Parameter Garden" type="Node3D" parent="."]
+[node name="Parameter Garden" type="Node3D" parent="." unique_id=929726191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -100)
 visible = false
 
-[node name="Wall" type="CSGBox3D" parent="Parameter Garden"]
+[node name="Wall" type="CSGBox3D" parent="Parameter Garden" unique_id=494103805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -24)
 material_override = ExtResource("9_1dgb5")
 size = Vector3(68, 3, 1)
 
-[node name="Wall2" type="CSGBox3D" parent="Parameter Garden"]
+[node name="Wall2" type="CSGBox3D" parent="Parameter Garden" unique_id=445873021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 1, -12)
 material_override = ExtResource("9_1dgb5")
 size = Vector3(1, 3, 23)
 
-[node name="Wall3" type="CSGBox3D" parent="Parameter Garden"]
+[node name="Wall3" type="CSGBox3D" parent="Parameter Garden" unique_id=1521180862]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1, -12)
 material_override = ExtResource("9_1dgb5")
 size = Vector3(1, 3, 23)
 
-[node name="Reverb Enabled" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Enabled" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=183072306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Disabled" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Disabled" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=978170213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Volume -12" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Volume -12" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=399741977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Volume 0" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Volume 0" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1149493067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Occlusion Cutoff 600" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Occlusion Cutoff 600" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1715665336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Occlusion Cutoff 1200" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Occlusion Cutoff 1200" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1715582760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Occlusion Cutoff 6000" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Occlusion Cutoff 6000" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1429573154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Occlusion Fadetime 0_2" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Occlusion Fadetime 0_2" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1696827836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Occlusion Fadetime 3" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Occlusion Fadetime 3" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1733920959]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Bass Proximity 0" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Bass Proximity 0" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=421517094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Bass Proximity 50" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Bass Proximity 50" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=511577958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Roomsize Multiplicator 1" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Roomsize Multiplicator 1" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1255957209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Roomsize Multiplicator 10" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Roomsize Multiplicator 10" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1452001957]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Speed of Sound 340" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Speed of Sound 340" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1757192675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Speed of Sound 100" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Speed of Sound 100" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1582561572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Audiophys Ticks 60" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Audiophys Ticks 60" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=897450796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -13)
 script = ExtResource("11_faltu")
 
-[node name="Reverb Audiophys Ticks 2" type="AudioStreamPlayer3D" parent="Parameter Garden"]
+[node name="Reverb Audiophys Ticks 2" type="AudioStreamPlayer3D" parent="Parameter Garden" unique_id=1084018267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -16)
 script = ExtResource("11_faltu")

@@ -1,6 +1,7 @@
 @icon("icon.png")
 class_name SpatialAudio3D extends AudioStreamPlayer3D
-## Adds spatial acoustics with calculated delays, reverb and occlusion effects based on level geometry.
+## A Godot 4 plugin that brings physically-informed 3D audio to your scenes
+## - with distance-based delay, raycast-driven reverb, and dynamic occlusion, all derived from your level geometry at runtime.
 ##
 ## It consists of three components:
 ##   * Soundsource
@@ -372,7 +373,7 @@ class Soundsource extends SpatialAudio3D:
 	var wetness = 1.0
 	var soundplayer_active: Soundplayer
 	var soundplayer_standby: Soundplayer
-	var _playing_since: int
+	var _is_playing_starting: bool = false
 
 
 	func _ready():
@@ -497,9 +498,11 @@ class Soundsource extends SpatialAudio3D:
 
 		# when playing finishes, signals from all soundplayers are being emitted at the same time.
 		# we just want to trigger ONE do_play() when looping is enabled.
-		if Time.get_ticks_msec() - _playing_since < 100:
+		if _is_playing_starting:
 			return
-		_playing_since = Time.get_ticks_msec()
+
+		_is_playing_starting = true
+		call_deferred("_clear_play_lock")
 
 		if reverb_enabled:
 			for r in reverbers:
@@ -508,6 +511,10 @@ class Soundsource extends SpatialAudio3D:
 		# start play on both
 		soundplayer_active.do_play()
 		soundplayer_standby.do_play()
+
+
+	func _clear_play_lock():
+		_is_playing_starting = false
 
 
 	func do_stop():
