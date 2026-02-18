@@ -658,7 +658,7 @@ class Reverber extends SpatialAudio3D:
 	func update_position(target_position: Vector3, colliding: bool):
 		var _soundplayer_active := soundplayer_active
 		var _soundplayer_standby := soundplayer_standby
-		
+
 		var fadeintime = 1 * soundsource.wetness if reverb_fadeintime < 0 else reverb_fadeintime
 		var fadeouttime = 3 * soundsource.wetness if reverb_fadeouttime < 0 else reverb_fadeouttime
 
@@ -749,6 +749,8 @@ class Soundplayer extends SpatialAudio3D:
 				set_audioeffect(audiobus_name, fx.lowpass, {"lowpass": lp_cutoff, "fadetime": occlusion_fadetime})
 	var occlusion_raycast: RayCast3D
 	var audiobus_name: String
+	var _fade_generation: int = 0
+	var _is_valid: bool = true
 
 
 	func _ready():
@@ -803,9 +805,17 @@ class Soundplayer extends SpatialAudio3D:
 
 
 	func _exit_tree():
+		_is_valid = false
+
+		if fade_tween:
+			fade_tween.kill()
+		if lowpass_tween:
+			lowpass_tween.kill()
+
+		remove_audiobus(audiobus_name)
+
 		for c in get_children():
 			remove_child(c)
-		remove_audiobus(audiobus_name)
 
 
 	func do_play():
@@ -825,6 +835,12 @@ class Soundplayer extends SpatialAudio3D:
 			update_effect_params()
 
 			if fadetime > 0:
+				# stamp this coroutine's generation before yielding.
+				# If set_inactive (or another set_active) is called while we await,
+				# it will increment _fade_generation, and we will bail on resume
+				# instead of overwriting the new state with ss.active.
+				_fade_generation += 1
+				var my_generation := _fade_generation
 				state = ss.fading_to_active
 
 				if fade_tween:
@@ -837,6 +853,10 @@ class Soundplayer extends SpatialAudio3D:
 				set_audiobus_volume(audiobus_name, proximity_volume, fadetime, fade_tween)
 				await get_tree().create_timer(fadetime + 0.010).timeout
 
+				# bail if we were superseded or the node is being freed.
+				if _fade_generation != my_generation or not _is_valid:
+					return
+
 			else:
 				set_audiobus_volume(audiobus_name, proximity_volume)
 
@@ -848,6 +868,9 @@ class Soundplayer extends SpatialAudio3D:
 		if state == ss.active or state == ss.fading_to_active:
 
 			if fadetime > 0:
+				# increment generation to invalidate any concurrent set_active coroutine.
+				_fade_generation += 1
+				var my_generation := _fade_generation
 				state = ss.fading_to_inactive
 
 				if fade_tween:
@@ -859,6 +882,10 @@ class Soundplayer extends SpatialAudio3D:
 
 				set_audiobus_volume(audiobus_name, -80, fadetime, fade_tween)
 				await get_tree().create_timer(fadetime + 0.010).timeout
+
+				# bail if we were superseded or the node is being freed.
+				if _fade_generation != my_generation or not _is_valid:
+					return
 
 			else:
 				set_audiobus_volume(audiobus_name, -80)
