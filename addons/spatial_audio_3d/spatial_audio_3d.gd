@@ -851,7 +851,7 @@ class Soundplayer extends SpatialAudio3D:
 				fade_tween.set_trans(transition)
 
 				set_audiobus_volume(audiobus_name, proximity_volume, fadetime, fade_tween)
-				await get_tree().create_timer(fadetime + 0.010).timeout
+				await fade_tween.finished
 
 				# bail if we were superseded or the node is being freed.
 				if _fade_generation != my_generation or not _is_valid:
@@ -881,7 +881,7 @@ class Soundplayer extends SpatialAudio3D:
 				fade_tween.set_trans(transition)
 
 				set_audiobus_volume(audiobus_name, -80, fadetime, fade_tween)
-				await get_tree().create_timer(fadetime + 0.010).timeout
+				await fade_tween.finished
 
 				# bail if we were superseded or the node is being freed.
 				if _fade_generation != my_generation or not _is_valid:
