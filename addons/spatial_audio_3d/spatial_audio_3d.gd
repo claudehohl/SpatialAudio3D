@@ -977,39 +977,41 @@ class Debugsphere extends Node3D:
 
 
 	func _ready():
-		var meshinstance = MeshInstance3D.new()
-		var spheremesh = SphereMesh.new()
-		var mat = StandardMaterial3D.new()
-		mat.albedo_color = color
-		#mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		#mat.fixed_size = true
-		spheremesh.material = mat
-		#meshinstance.cast_shadow = false
-		spheremesh.radius = size / 2
-		spheremesh.height = size
-		meshinstance.mesh = spheremesh
-		meshinstance.visibility_range_end = max_raycast_distance * 1.3
-		meshinstance.visibility_range_end_margin = max_raycast_distance / 10.0
-		meshinstance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
-		add_child(meshinstance)
+		# size 0 means label-only: a degenerate SphereMesh floods "Vector3 cannot be normalized" warnings per vertex
+		if size > 0:
+			var meshinstance = MeshInstance3D.new()
+			var spheremesh = SphereMesh.new()
+			var mat = StandardMaterial3D.new()
+			mat.albedo_color = color
+			#mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			#mat.fixed_size = true
+			spheremesh.material = mat
+			#meshinstance.cast_shadow = false
+			spheremesh.radius = size / 2
+			spheremesh.height = size
+			meshinstance.mesh = spheremesh
+			meshinstance.visibility_range_end = max_raycast_distance * 1.3
+			meshinstance.visibility_range_end_margin = max_raycast_distance / 10.0
+			meshinstance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
+			add_child(meshinstance)
 
-		# create second sphere without depth-test, displayed when occluded
-		var occluded_meshinstance = MeshInstance3D.new()
-		var occluded_spheremesh = SphereMesh.new()
-		var occluded_mat = StandardMaterial3D.new()
-		occluded_mat.albedo_color = Color(color, 0.2)
-		#occluded_mat.fixed_size = true
-		occluded_mat.no_depth_test = true
-		occluded_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-		occluded_spheremesh.material = occluded_mat
-		occluded_meshinstance.cast_shadow = false
-		occluded_spheremesh.radius = size / 2
-		occluded_spheremesh.height = size
-		occluded_meshinstance.mesh = occluded_spheremesh
-		occluded_meshinstance.visibility_range_end = max_raycast_distance * 1.3
-		occluded_meshinstance.visibility_range_end_margin = max_raycast_distance / 10.0
-		occluded_meshinstance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
-		add_child(occluded_meshinstance)
+			# create second sphere without depth-test, displayed when occluded
+			var occluded_meshinstance = MeshInstance3D.new()
+			var occluded_spheremesh = SphereMesh.new()
+			var occluded_mat = StandardMaterial3D.new()
+			occluded_mat.albedo_color = Color(color, 0.2)
+			#occluded_mat.fixed_size = true
+			occluded_mat.no_depth_test = true
+			occluded_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			occluded_spheremesh.material = occluded_mat
+			occluded_meshinstance.cast_shadow = false
+			occluded_spheremesh.radius = size / 2
+			occluded_spheremesh.height = size
+			occluded_meshinstance.mesh = occluded_spheremesh
+			occluded_meshinstance.visibility_range_end = max_raycast_distance * 1.3
+			occluded_meshinstance.visibility_range_end_margin = max_raycast_distance / 10.0
+			occluded_meshinstance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
+			add_child(occluded_meshinstance)
 
 		# create label3d
 		label = Label3D.new()
