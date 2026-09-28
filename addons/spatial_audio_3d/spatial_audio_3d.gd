@@ -46,7 +46,10 @@ class_name SpatialAudio3D extends AudioStreamPlayer3D
 @export var shut_up: bool = false ## Mute output.
 @export var debug: bool = false ## Visualize raycasts, measurement rays and reverb-audioplayers.
 
-@onready var player_camera: Camera3D = get_viewport().get_camera_3d() # store reference to camera so that global_position is always up to date
+# always ask the viewport, so late-spawned players and camera switches are picked up
+var player_camera: Camera3D:
+	get:
+		return get_viewport().get_camera_3d() if is_inside_tree() else null
 @onready var raycasts_coords: Array = [
 	Vector3(0, 0, max_raycast_distance),						# N
 	Vector3(max_raycast_distance, 0, max_raycast_distance),		# NW
@@ -530,6 +533,10 @@ class Soundsource extends SpatialAudio3D:
 
 
 	func update_run():
+		# no camera yet (e.g. player not spawned): keep last state
+		if player_camera == null:
+			return
+
 		distance_to_player = global_position.distance_to(player_camera.global_position)
 
 		# only update delay when moved >5m since last update
@@ -899,6 +906,9 @@ class Soundplayer extends SpatialAudio3D:
 
 
 	func update_effect_params():
+		if player_camera == null:
+			return
+
 		# update distance vars
 		distance_to_soundsource = global_position.distance_to(soundsource.global_position)
 		distance_to_player = global_position.distance_to(player_camera.global_position)
