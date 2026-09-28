@@ -100,6 +100,7 @@ func _ready():
 	# module vars
 	soundsource.name = name
 	soundsource.stream = stream
+	soundsource.bus = bus
 	soundsource.volume_db = volume_db
 	soundsource.max_polyphony = max_polyphony
 	soundsource.doppler_tracking = doppler_tracking
@@ -202,6 +203,7 @@ func create_soundplayer(name_p: String, with_reverb_fx: bool = true) -> Soundpla
 	# module vars
 	soundplayer.name = name_p
 	soundplayer.stream = stream
+	soundplayer.bus = bus
 	soundplayer.volume_db = volume_db
 	soundplayer.max_polyphony = max_polyphony
 
@@ -220,7 +222,7 @@ func create_audiobus(bus_name, vol_db = 0):
 	AudioServer.add_bus(a)
 	AudioServer.set_bus_name(a, bus_name)
 	AudioServer.set_bus_volume_db(a, vol_db)
-	AudioServer.set_bus_send(a, "Master")
+	AudioServer.set_bus_send(a, bus)
 
 
 func remove_audiobus(bus_name: String):
@@ -469,6 +471,7 @@ class Soundsource extends SpatialAudio3D:
 		# module vars
 		reverber.name = name_p
 		reverber.stream = stream
+		reverber.bus = bus
 		reverber.volume_db = volume_db
 		reverber.max_polyphony = max_polyphony
 		reverber.soundsource = soundsource
@@ -783,6 +786,7 @@ class Soundplayer extends SpatialAudio3D:
 		proximity_volume = volume_db
 
 		# set my bus to this newly created bus.
+		# must stay after create_audiobus(), which still reads the inherited bus as send target.
 		bus = audiobus_name
 
 		# create raycast for occlusion test
